@@ -4,6 +4,7 @@
   "description": "typescript 开发环境",
   "main": "index.js",
   "scripts": {
+    "tsc:w": "npm run tsc -w",
     "prettier-code": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
