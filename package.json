@@ -4,68 +4,25 @@
   "description": "typescript 开发环境",
   "main": "index.js",
   "scripts": {
-    "tsc:w": "npm run tsc -w",
-    "prettier-code": "lint-staged",
+    "tsc": "tsc",
+    "tscw": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jfengsky/uncharted.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jfengsky/uncharted/issues"
   },
   "homepage": "https://github.com/jfengsky/uncharted#readme",
-  "lint-staged": {
-    "linters": {
-      "src/**/*.js": [
-        "prettier-standard",
-        "git add"
-      ],
-      "build/**/*.js": [
-        "prettier-standard",
-        "git add"
-      ]
-    }
-  },
-  "pre-commit": [
-    "prettier-code"
-  ],
-  "dependencies": {
-    "express": "~4.15.2"
-  },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "babel-register": "^6.24.0",
-    "body-parser": "^1.17.1",
-    "bootflat": "^2.0.4",
-    "express-react-views": "^0.10.2",
-    "fetch-ie8": "^1.5.0",
-    "lint-staged": "^3.4.0",
-    "mocha": "^3.4.1",
-    "mongodb": "^2.2.26",
-    "multer": "^1.3.0",
-    "pre-commit": "^1.2.2",
-    "prettier-standard": "^1.0.6",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.4",
-    "react-router": "^4.0.0",
-    "react-router-dom": "^4.1.1",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.6.0",
-    "webpack": "^2.3.2",
-    "webpack-node-externals": "^1.6.0"
+    "@types/react": "^15.0.27",
+    "@types/react-dom": "^15.5.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "webpack": "^2.6.1"
   }
 }
