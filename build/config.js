@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
 
 export const entry = {
-  bundle: './js/test.js',
+  bundle: './js/src/index.js',
 }
 
 export const plugs = [
