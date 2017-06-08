@@ -1,72 +1,54 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var a = 'aaaa';
-var b = 2222;
-var c = 7;
+const a = 'aaaa';
+const b = 2222;
+let c = 7;
 c = 'ccc';
 // const add = (x: number, y: number): number => x + y
-function add(x, y) {
-    if (y === void 0) { y = 0; }
+function add(x, y = 0) {
     return x + y;
 }
-var reduce = function (x, y) { return x - y; };
+const reduce = (x, y) => x - y;
 add(3);
 reduce(4, 6);
-var test = function (a, b, c) {
+const test = (a, b, c) => {
     console.log(a);
     console.log(b);
     console.log(c);
 };
-function func1() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
+function func1(...args) {
     console.log(args);
 }
 func1(1, 2, 3, 4);
-var Person = (function () {
-    function Person() {
+class Person {
+    constructor() {
     }
-    Person.prototype.eat = function () {
+    eat() {
         console.log(name);
-    };
-    return Person;
-}());
-var p1 = new Person();
-var Employer = (function (_super) {
-    __extends(Employer, _super);
-    function Employer(name, code) {
-        return _super.call(this) || this;
     }
-    Employer.prototype.work = function () {
-        _super.prototype.eat.call(this);
-    };
-    return Employer;
-}(Person));
-var e1 = new Employer('aaa', 1);
-var xcatliu = {
+}
+const p1 = new Person();
+class Employer extends Person {
+    constructor(name, code) {
+        super();
+    }
+    work() {
+        super.eat();
+    }
+}
+const e1 = new Employer('aaa', 1);
+let xcatliu = {
     name: 'xCat',
     age: 25
 };
 // xcatliu.name = 'xbt'
 xcatliu.age = 20;
-var array1 = [1, 2, 3, 4];
-var array2 = [1, '2', true];
-var mySum = function (x, y) {
+let array1 = [1, 2, 3, 4];
+let array2 = [1, '2', true];
+let mySum = function (x, y) {
     return x + y;
 };
-var mySum2 = function (x, y) { return x + y; };
+let mySum2 = (x, y) => x + y;
 mySum2(1, 2);
-var mySum3 = function (x, y) {
+let mySum3 = function (x, y) {
     return x + y;
 };
 function getName(n) {

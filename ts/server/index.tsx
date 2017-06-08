@@ -10,6 +10,7 @@ import {layoutProps, layout } from '../config/view'
 
 const app = express()
 app.use('/static', express.static('./dist'))
+app.use('/static', express.static('./node_modules'))
 app.get('*', (req, res) => {
   let sendProp: layoutProps = {
     title: '',

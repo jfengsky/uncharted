@@ -4,17 +4,21 @@
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Button } from 'antd'
+import { BrowserRouter } from 'react-router-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-const Home = () => (
-  <div>home</div>
-)
+import reducer from './reducer'
+import Root from './container/Root'
+
+
+const store: any = createStore(reducer)
 
 ReactDOM.render(
-  <div>
-    <Button type="primary">Primary</Button>
-    <Home />
-    1111
-  </div>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Root />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 )

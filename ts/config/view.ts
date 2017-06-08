@@ -10,6 +10,7 @@ export const layout = (props: layoutProps): string => `
     <head>
       <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
       <title>${props.title}</title>
+      <link rel="stylesheet" type="text/css" href="/static/antd/dist/antd.css" />
     </head>
     <body>
       <div id="root">${props.content || ''}</div>
