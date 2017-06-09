@@ -1,15 +1,13 @@
 import * as React from 'react'
-import { Layout} from 'antd'
+// import { Layout} from 'antd'
 // const { Header } = Layout
 
-import Menu from '../component/Menu'
+// import Menu from '../component/Menu'
 
 class Root extends React.Component<any, any> {
   render() {
     return (
-      <Layout>
-        <Menu />
-      </Layout>
+      <div>roots</div>
     )
   }
 }
