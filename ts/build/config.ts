@@ -2,8 +2,7 @@ import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals'
 
 export const entry = {
-  // bundle: './js/src/index.jsx',
-  bundle: "./ts/src/index.tsx"
+  bundle: './ts/APP/index.tsx',
 }
 
 export const plugs = [
@@ -24,11 +23,6 @@ export const baseConfig = {
         use: ['babel-loader'],
         exclude: /node_modules/,
       },
-      {
-        test: /\.ts|tsx$/,
-        use: ['ts-loader'],
-        exclude: /node_modules/,
-      }
     ],
   },
   plugins: [],
@@ -36,12 +30,12 @@ export const baseConfig = {
 
 export const resolve = {
   modules: ['node_modules', 'src'],
-  extensions: ['*', '.js','.jsx','.ts', '.tsx', '.json']
+  extensions: ['*', '.js', '.json'],
 }
 
 export const node = {
   __dirname: false,
-  __filename: false
+  __filename: false,
 }
 
 export const externals = [nodeExternals()]

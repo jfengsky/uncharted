@@ -1,3 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.serverPort = 3300;
+exports.default = Object.assign({});
