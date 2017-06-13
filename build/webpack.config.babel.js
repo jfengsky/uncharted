@@ -1,6 +1,6 @@
 // var webpack = require('webpack');
 
-import { resolve, externals, module } from './config'
+import { resolve, externals, module, node } from './config'
 export default {
   entry: './ts/APP/index.tsx',
   output: {
@@ -10,6 +10,7 @@ export default {
   // Turn on sourcemaps
   devtool: 'source-map',
   resolve,
+  node,
   // Add minification
   plugins: [
     // new webpack.optimize.UglifyJsPlugin()

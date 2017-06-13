@@ -1,13 +1,19 @@
 import webpack from 'webpack'
+import nodeExternals from 'webpack-node-externals'
 
 export const resolve = {
   extensions: [".ts", ".tsx", ".js", ".json"]
 }
 
-export const externals = {
+export const node = {
+  __dirname: false,
+  __filename: false,
+}
+
+export const externals = [nodeExternals(),{
   "react": "React",
   "react-dom": "ReactDOM"
-}
+}]
 
 export const module = {
   rules: [

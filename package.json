@@ -9,6 +9,7 @@
     "tscw": "tsc --watch",
     "start:server": "node js/server/index.js",
     "watch": "webpack --config build/webpack.config.babel.js --progress --colors --watch",
+    "watch:client": "webpack --config build/webpack.config.client.babel.js --progress --colors --watch",
     "prettier-code": "lint-staged",
     "pushpkg": "git add -A && git commit -m auto-pkg && git push origin master",
     "test": "echo \"Error: no test specified\" && exit 1"
