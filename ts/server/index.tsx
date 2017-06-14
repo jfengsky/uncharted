@@ -1,11 +1,14 @@
+import * as React from 'react'
+import * as ReactDOMServer from 'react-dom/server'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import * as multer from 'multer'
 
 import { layout, ITProps } from '../router/layout'
+import { Hello } from "../APP/Hello"
 
 const app = express()
-const port: number = 4000
+const port: number = 4200
 const upload = multer()
 
 app.use(bodyParser.json({limit: '50mb'}))
@@ -15,9 +18,11 @@ app.use(express.static('./public'))
 
 app.get('*', (req, res) => {
 
+  const context = {}
+  const html = ReactDOMServer.renderToString(<Hello compiler="TypeScript" framework="React" />)
   let prop: ITProps = {
-    title: 'client',
-    content: '',
+    title: 'server',
+    content: html,
     __INITSTATE__: {}
   }
 
