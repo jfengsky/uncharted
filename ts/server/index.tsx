@@ -5,7 +5,7 @@ import * as bodyParser from 'body-parser'
 import * as multer from 'multer'
 
 import { layout, ITProps } from '../router/layout'
-import { Hello } from "../APP/Hello"
+import { Root } from "../APP/Root"
 
 const app = express()
 const port: number = 4200
@@ -19,7 +19,7 @@ app.use(express.static('./public'))
 app.get('*', (req, res) => {
 
   const context = {}
-  const html = ReactDOMServer.renderToString(<Hello compiler="TypeScript" framework="React" />)
+  const html = ReactDOMServer.renderToString(<Root />)
   let prop: ITProps = {
     title: 'server',
     content: html,

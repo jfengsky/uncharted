@@ -11,7 +11,9 @@
         "emitDecoratorMetadata": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
     },
     "compileOnSave": false,
     "filesGlob": [
