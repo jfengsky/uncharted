@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 module.exports = {
     entry: {
-      index: "./ts/index.tsx"
+      index: "./ts/src/index.tsx"
     },
     output: {
         filename: "[name].js",
