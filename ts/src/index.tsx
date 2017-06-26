@@ -12,10 +12,9 @@ interface IAppState {}
 class Root extends React.Component<IAppProps, IAppState> {
   public render() {
     return (
-      <Layout>
-        layout
-        <Sider>
-          sider
+      <Layout preClassName={['ant-layout-has-sider']}>
+        <Sider style={{width: '200px'}}>
+          <div className="logo">logo</div>
         </Sider>
       </Layout>
     )

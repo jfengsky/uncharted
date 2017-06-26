@@ -1,9 +1,12 @@
 import * as React from 'react'
 
+import './style/index.css'
+
 import Sider from './Sider'
 
 export interface ITBasicProps {
   className: string
+  preClassName?: string[]
 }
 
 function generator(props: any) {
@@ -21,28 +24,39 @@ function generator(props: any) {
   }
 }
 
-class Basic extends React.Component<any, any> {
+class Basic extends React.Component<ITBasicProps, any> {
   render(){
+
+    let {
+      preClassName,
+      className,
+      ...prop
+    } = this.props
+
+    if(preClassName.length){
+      className += preClassName.join(' ')
+    }
+
     return (
-      <div {...this.props}>{this.props.children}</div>
+      <div className={className} {...prop}>{this.props.children}</div>
     )
   }
 }
 
 const Layout = generator({
-  className: 'ant-layout'
+  className: 'ant-layout '
 })(Basic)
 
 const Header = generator({
-  className: 'ant-layout-header'
+  className: 'ant-layout-header '
 })(Basic)
 
 const Footer = generator({
-  className: 'ant-layout-footer'
+  className: 'ant-layout-footer '
 })(Basic)
 
 const Content = generator({
-  className: 'ant-layout-content'
+  className: 'ant-layout-content '
 })(Basic)
 
 Layout.Header = Header
