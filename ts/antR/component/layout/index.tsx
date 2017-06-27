@@ -33,7 +33,7 @@ class Basic extends React.Component<ITBasicProps, any> {
       ...prop
     } = this.props
 
-    if(preClassName.length){
+    if(preClassName && preClassName.length){
       className += preClassName.join(' ')
     }
 
