@@ -1,35 +1,26 @@
 import * as React from 'react'
-import { Menu as MenuAnt, Layout } from '../../antR/component'
-
-const { Sider } = Layout
 
 interface ITProps { }
 interface ITState { }
 
 export default class Menu extends React.Component<ITProps, ITState> {
   public render(): any {
+    const floatStyle = {
+      float: 'left'
+    }
     return (
-      <Sider style={{ width: '200px' }}>
-        <div className="logo">logo</div>
-        <MenuAnt>
-          <li>
-            <div className="ant-menu-submenu-title">
-              <span>
-                <i className="anticon anticon-user" />
-                <span className="nav-text">页面列表</span>
-              </span>
-            </div>
-            <ul className="ant-menu ant-menu-inline ant-menu-sub">
-              <li className="ant-menu-item-selected ant-menu-item" style={{ paddingLeft: 48 }}>
-                添加页面
-                  </li>
-              <li className="ant-menu-item" style={{ paddingLeft: 48 }}>
-                添加页面类型
-                  </li>
-            </ul>
-          </li>
-        </MenuAnt>
-      </Sider>
+      <div>
+        <ul style={floatStyle}>
+          <li>页面列表</li>
+          <li>编辑页面类型</li>
+          <li>新增页面</li>
+        </ul>
+        <ul style={floatStyle}>
+          <li>接口列表</li>
+          <li>编辑接口类型</li>
+          <li>新增接口</li>
+        </ul>
+      </div>
     )
   }
 }
