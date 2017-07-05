@@ -1,26 +1,44 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-
+import initialState from './store/initialState'
 import Menu from './component/Menu'
+import Content from './component/Content'
 import Home from './component/Home'
 import Api from './component/Api'
 import Tools from './component/Tools'
+import PageType from './component/PageType'
 
 interface ITProps { }
 interface ITState { }
 
-export default class App extends React.Component<ITProps, ITState> {
+const components: any = {
+  Home,
+  Api,
+  Tools,
+  PageType
+}
+
+class App extends React.Component<ITProps, ITState> {
   public render(): JSX.Element {
+    const {
+      api,
+      page,
+      tools
+    } = initialState.menu
+    const routeList: any[] = [...api, ...page, ... tools]
     return (
       <div style={{fontSize: 12}}>
         <Menu />
-        <Route exact path='/' component={Home as any} />
-        <Route path='/api' component={Api as any} />
-        <Route path='/tools' component={Tools as any} />
+        {
+          routeList.map( ({link, cmp}, index: number): JSX.Element => <Route key={index} exact={link === '/'} path={link} component={ components[cmp] as any} /> )
+        }
       </div>
     )
   }
 }
+
+export default App
