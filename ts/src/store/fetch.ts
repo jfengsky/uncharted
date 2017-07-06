@@ -7,7 +7,8 @@ const headers = {
 
 export interface ITPageType {
   type: 'add' | 'delete' | 'modify' | 'search'
-  value: string
+  value?: string
+  id?: string
 }
 
 export const FETCH_PAGE_TYPE = async (data: ITPageType) => {

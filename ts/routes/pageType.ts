@@ -9,5 +9,9 @@ export default (req: any) => {
   switch(type){
     case 'add':
       return pageTypeDB.save({value, id})
+    case 'search':
+      return pageTypeDB.search({id})
+    case 'delete':
+      return pageTypeDB.delete({id})
   }
 }

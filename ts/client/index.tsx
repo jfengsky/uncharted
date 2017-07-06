@@ -47,12 +47,7 @@ app.post('*', async (req, res) => {
     switch (req.path) {
       case pageType:
         let sendData: any = await pageTypeRoute(req)
-        if(sendData.result.ok){
-          res.send(Object.assign({},successData, {data:sendData.ops[0]}))
-        } else {
-          throw new Error('add pageType fail')
-        }
-        break;
+        return res.send(Object.assign({},successData, sendData))
     }
   } else {
     res.sendStatus(404)

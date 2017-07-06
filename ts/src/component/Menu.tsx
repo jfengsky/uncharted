@@ -2,6 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { SEARCH_PAGETYPE, search_PageTypes  } from '../action/page'
+import { FETCH_PAGE_TYPE, ITPageType } from '../store/fetch'
+
 interface ITMenuListItem {
   title: string
   link: string
@@ -18,6 +21,7 @@ interface ITProps {
     api: ITMenuListItem[]
     tools: ITMenuListItem[]
   }
+  fetchPageType: (data: any[]) => any
 }
 interface ITState { }
 
@@ -39,6 +43,12 @@ const MenuList = (props: ITMenuList): JSX.Element => (
 class Menu extends React.Component<ITProps, ITState> {
   componentDidMount () {
     // 异步获取页面类型信息
+    let data: ITPageType = {
+      type: 'search'
+    }
+    FETCH_PAGE_TYPE(data).then( data => {
+      this.props.fetchPageType(data.data)
+    })
   }
   
   public render():JSX.Element {
@@ -57,8 +67,14 @@ class Menu extends React.Component<ITProps, ITState> {
   }
 }
 
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchPageType: (data: any) => {
+    dispatch(search_PageTypes(data))
+  }
+})
+
 const mapStateToProps = (state: any) => ({
   ...state
 })
 
-export default connect(mapStateToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)
