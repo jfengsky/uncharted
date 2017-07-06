@@ -1,4 +1,4 @@
-import apis from './apis'
+import { pageType } from './apis'
 
 const headers = {
   Accept: 'application/json',
@@ -11,7 +11,7 @@ export interface ITPageType {
 }
 
 export const FETCH_PAGE_TYPE = async (data: ITPageType) => {
-  return await fetch(apis.pageType, {
+  return await fetch(pageType, {
     method: 'post',
     headers,
     body: JSON.stringify(data)

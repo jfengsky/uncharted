@@ -37,6 +37,10 @@ const MenuList = (props: ITMenuList): JSX.Element => (
 )
 
 class Menu extends React.Component<ITProps, ITState> {
+  componentDidMount () {
+    // 异步获取页面类型信息
+  }
+  
   public render():JSX.Element {
     let {
       api,
