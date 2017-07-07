@@ -20,7 +20,7 @@ export default {
     api: [{
       link: '/api',
       title: '接口列表',
-      cmp: 'Api'
+      cmp: 'ApiRoute'
     },{
       link: '/api/type',
       title: '编辑接口类型',

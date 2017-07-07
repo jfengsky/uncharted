@@ -1,6 +1,7 @@
 export const ADD_PAGETYPE: string = 'ADD_PAGETYPE'
 export const SEARCH_PAGETYPE: string = 'SEARCH_PAGETYPE'
 export const DELETE_PAGETYPE: string = 'DELETE_PAGETYPE'
+export const MODIFY_PAGETYPE: string = 'MODIFY_PAGETYPE'
 
 export interface ITAction {
   type: string
@@ -19,5 +20,10 @@ export const search_PageTypes = (list: any[]): ITAction => ({
 
 export const delete_PageTypes = (value: string): ITAction => ({
   type: DELETE_PAGETYPE,
+  value
+})
+
+export const modify_PageTypes = (value: any): ITAction => ({
+  type: MODIFY_PAGETYPE,
   value
 })

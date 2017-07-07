@@ -2,13 +2,15 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Link,
+  Switch
 } from 'react-router-dom'
 import initialState from './store/initialState'
 import Menu from './component/Menu'
 import Content from './component/Content'
 import Home from './component/Home'
-import Api from './component/Api'
+import ApiRoute from './component/ApiRoute'
 import Tools from './component/Tools'
 import PageType from './component/PageType'
 
@@ -17,7 +19,7 @@ interface ITState { }
 
 const components: any = {
   Home,
-  Api,
+  ApiRoute,
   Tools,
   PageType
 }

@@ -13,5 +13,7 @@ export default (req: any) => {
       return pageTypeDB.search({id})
     case 'delete':
       return pageTypeDB.delete({id})
+    case 'modify':
+      return pageTypeDB.updata({id, value})
   }
 }

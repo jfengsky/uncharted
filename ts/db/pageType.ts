@@ -62,8 +62,24 @@ export const pageTypeDB = {
       })
     })
   },
-  modify(data: ITPageTypeModify) {
-
+  updata(data: ITPageTypeModify) {
+    let {
+      id,
+      value
+    } = data
+    return new Promise((resolve, reject) => {
+      MongoClient.connect(URL, (err, db) => {
+        const collection = db.collection(colName)
+        let where = {
+          _id: new ObjectID(id)
+        }
+        collection.update(where,{$set:{name: value}}, (inerr, docs) => {
+          // console.log(docs)
+          resolve({})
+          db.close()
+        })
+      })
+    })
   },
   delete(data: ITPageTypeDelete) {
     let {

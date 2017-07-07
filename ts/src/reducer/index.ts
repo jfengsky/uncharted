@@ -1,5 +1,5 @@
 import initialState from '../store/initialState'
-import { ADD_PAGETYPE, ITAction, SEARCH_PAGETYPE, DELETE_PAGETYPE } from '../action/page'
+import { ADD_PAGETYPE, ITAction, SEARCH_PAGETYPE, DELETE_PAGETYPE, MODIFY_PAGETYPE } from '../action/page'
 
 // interface Store {
 //     setState: (partial: Object) => void;
@@ -16,8 +16,20 @@ export default (state: any = initialState, action:ITAction ) => {
     case SEARCH_PAGETYPE:
       return Object.assign({}, state, {pageTypeList:action.value})
     case DELETE_PAGETYPE:
-      debugger
-      return state
+      let pageTypeList = [...state.pageTypeList].filter( (item: any) => {
+        if(item._id !== action.value){
+          return item
+        }
+      })
+      return Object.assign({}, state, {pageTypeList})
+    case MODIFY_PAGETYPE:
+      let pageTypeListModify = [...state.pageTypeList].map( (item: any) => {
+        if(item._id === action.value.id){
+          item.name = action.value.value
+        }
+        return item
+      })
+      return Object.assign({}, state, {pageTypeList: pageTypeListModify})
     default:
       return state
   }
