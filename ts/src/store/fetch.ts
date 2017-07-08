@@ -1,4 +1,4 @@
-import { pageType } from './apis'
+import { pageType , apiType} from './apis'
 
 const headers = {
   Accept: 'application/json',
@@ -13,6 +13,22 @@ export interface ITPageType {
 
 export const FETCH_PAGE_TYPE = async (data: ITPageType) => {
   return await fetch(pageType, {
+    method: 'post',
+    headers,
+    body: JSON.stringify(data)
+  }).then(Response => Response.json())
+}
+
+export interface ITApiType {
+  type: 'add' | 'delete' | 'modify' | 'search'
+  path: string
+  desc: string
+  restype: string
+  pageTypeId: string
+}
+
+export const FETCH_API_TYPE = async (data: ITApiType) => {
+  return await fetch(apiType, {
     method: 'post',
     headers,
     body: JSON.stringify(data)
