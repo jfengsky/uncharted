@@ -6,7 +6,7 @@ import * as multer from 'multer'
 
 import pageTypeRoute from '../routes/pageType'
 
-import { pageType, apiList } from '../src/store/apis'
+import { pageType, apiList, apiType } from '../src/store/apis'
 import { ITLayout, layout } from '../views/layout'
 
 const clientPort: number = 4100
@@ -43,11 +43,16 @@ interface ITAddReslut {
 }
 
 app.post('*', async (req, res) => {
+  let sendData: any = {}
   if (apiList.indexOf(req.path) >= 0) {
     switch (req.path) {
       case pageType:
-        let sendData: any = await pageTypeRoute(req)
+         sendData = await pageTypeRoute(req)
         return res.send(Object.assign({},successData, sendData))
+      case apiType:
+        // TODO
+        // sendData = await pageTypeRoute(req)
+        // return res.send(Object.assign({},successData, sendData))
     }
   } else {
     res.sendStatus(404)

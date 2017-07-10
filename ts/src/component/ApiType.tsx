@@ -38,6 +38,15 @@ class ApiType extends React.Component<ITProps, ITState> {
       pageTypeId: ''
     }
   }
+
+  componentWillReceiveProps(nextProps: any){
+    if(!this.state.pageTypeId){
+      this.setState({
+        pageTypeId: nextProps.pageTypeList[0]._id
+      })
+    }
+  }
+
   public render(): JSX.Element {
     let {
       path,
@@ -65,7 +74,7 @@ class ApiType extends React.Component<ITProps, ITState> {
           <select value={pageTypeId} onChange={ev => { this.setState({ pageTypeId: ev.target.value }) }}>
             {
               !!this.props.pageTypeList && this.props.pageTypeList.map((item, index) => (
-                <option key={index} value={item.id}>{item.name}</option>
+                <option key={index} value={item._id}>{item.name}</option>
               ))
             }
           </select>
