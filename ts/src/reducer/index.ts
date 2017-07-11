@@ -1,5 +1,6 @@
 import initialState from '../store/initialState'
 import { ADD_PAGETYPE, ITAction, SEARCH_PAGETYPE, DELETE_PAGETYPE, MODIFY_PAGETYPE } from '../action/page'
+import { ADD_APITYPE, SEARCH_APITYPE } from '../action/api'
 
 // interface Store {
 //     setState: (partial: Object) => void;
@@ -30,6 +31,10 @@ export default (state: any = initialState, action:ITAction ) => {
         return item
       })
       return Object.assign({}, state, {pageTypeList: pageTypeListModify})
+    case ADD_APITYPE:
+    return state
+    case SEARCH_APITYPE:
+      return Object.assign({}, state, {apiTypeList:action.value})
     default:
       return state
   }

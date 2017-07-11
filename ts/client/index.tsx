@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser'
 import * as multer from 'multer'
 
 import pageTypeRoute from '../routes/pageType'
+import apiTypeRoute from '../routes/apiType'
 
 import { pageType, apiList, apiType } from '../src/store/apis'
 import { ITLayout, layout } from '../views/layout'
@@ -50,9 +51,8 @@ app.post('*', async (req, res) => {
          sendData = await pageTypeRoute(req)
         return res.send(Object.assign({},successData, sendData))
       case apiType:
-        // TODO
-        // sendData = await pageTypeRoute(req)
-        // return res.send(Object.assign({},successData, sendData))
+        sendData = await apiTypeRoute(req)
+        return res.send(Object.assign({},successData, sendData))
     }
   } else {
     res.sendStatus(404)

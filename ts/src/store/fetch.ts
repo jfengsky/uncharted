@@ -21,10 +21,11 @@ export const FETCH_PAGE_TYPE = async (data: ITPageType) => {
 
 export interface ITApiType {
   type: 'add' | 'delete' | 'modify' | 'search'
-  path: string
-  desc: string
-  restype: string
-  pageTypeId: string
+  path?: string
+  desc?: string
+  restype?: string
+  pageTypeId?: string,
+  id?: string
 }
 
 export const FETCH_API_TYPE = async (data: ITApiType) => {

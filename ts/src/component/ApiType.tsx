@@ -1,13 +1,15 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
+import Radio from './Radio'
+import { getQueryStringByName } from '../store/util'
 import { add_apiType, ITValue } from '../action/api'
 import { FETCH_API_TYPE, ITApiType } from '../store/fetch'
-import Radio from './Radio'
 
 interface ITProps {
   id?: any
   pageTypeList: any[]
+  apiTypeList: any[]
   addApiType: (data: ITValue) => void
 }
 interface ITState {
@@ -15,6 +17,7 @@ interface ITState {
   desc: string
   restype: string
   pageTypeId: string
+  id: string
 }
 
 const radioData = {
@@ -28,6 +31,8 @@ const radioData = {
   }]
 }
 
+const buttonTextList = ['新增', '编辑']
+
 class ApiType extends React.Component<ITProps, ITState> {
   constructor(props: ITProps) {
     super(props)
@@ -35,25 +40,56 @@ class ApiType extends React.Component<ITProps, ITState> {
       path: '',
       desc: '',
       restype: 'post',
-      pageTypeId: ''
+      pageTypeId: '',
+      id: getQueryStringByName('id')
     }
   }
 
-  componentWillReceiveProps(nextProps: any){
-    if(!this.state.pageTypeId){
+  componentWillReceiveProps(nextProps: any) {
+    let {
+      pageTypeList,
+      apiTypeList
+    } = nextProps
+    let {
+      id
+    } = this.state
+    if (!this.state.pageTypeId) {
       this.setState({
-        pageTypeId: nextProps.pageTypeList[0]._id
+        pageTypeId: pageTypeList[0]._id
       })
     }
-  }
 
+    if (id && apiTypeList) {
+      let currentApiType: ITState
+      apiTypeList.some((item: any) => {
+        if(item._id === id){
+          currentApiType = item
+        }
+      })
+      this.setState({
+        path: currentApiType.path,
+        desc: currentApiType.desc,
+        restype: currentApiType.restype,
+        pageTypeId: currentApiType.pageTypeId
+      })
+    }
+
+  }
+  
   public render(): JSX.Element {
     let {
       path,
       desc,
       restype,
-      pageTypeId
+      pageTypeId,
+      id
     } = this.state
+
+    let buttonText = buttonTextList[0]
+    if(id){
+      buttonText = buttonTextList[1]
+    }
+
     return (
       <div style={{ clear: 'both' }}>
         <label>
@@ -80,7 +116,7 @@ class ApiType extends React.Component<ITProps, ITState> {
           </select>
         </label>
         <br />
-        <button onClick={this.clickHandleAddApi}>新增接口类型</button>
+        <button onClick={this.clickHandleAddApi}>{buttonText}接口类型</button>
       </div>
     )
   }
@@ -103,28 +139,34 @@ class ApiType extends React.Component<ITProps, ITState> {
       path,
       desc,
       restype,
-      pageTypeId
+      pageTypeId,
+      id
     } = this.state
-    if(!path || !desc){
+    if (!path || !desc) {
       return false
     }
-    let fetchParam: ITApiType = {
-      type: 'add',
+
+    let editType: string = 'add'
+    if(id){
+      editType = 'modify'
+    }
+
+    let fetchParam: any = { // ITApiType
+      type: editType,
       path,
       desc,
       restype,
-      pageTypeId
+      pageTypeId,
+      id
     }
     let fetchBack = await FETCH_API_TYPE(fetchParam)
-    // FETCH_API_TYPE()
-    // this.props.addApiType({
-    //   ...this.state
-    // })
+    window.location.reload()
   }
 }
 
-const mapStateToProps = (state: any) => ({
-  pageTypeList: state.pageTypeList
+const mapStateToProps = (state: any): any => ({
+  pageTypeList: state.pageTypeList,
+  apiTypeList: state.apiTypeList
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
