@@ -15,8 +15,8 @@ export default (req: any) => {
     case 'search':
       return apiTypeDB.search({id})
     case 'delete':
-      // return pageTypeDB.delete({id})
+      return apiTypeDB.delete({id})
     case 'modify':
-      // return pageTypeDB.updata({id, value})
+      return apiTypeDB.updata({id, desc, pageTypeId, path, restype})
   }
 }

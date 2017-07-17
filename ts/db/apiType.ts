@@ -56,5 +56,42 @@ export const apiTypeDB = {
         })
       })
     })
+  },
+  updata(data: ITApiTypeSave) {
+    let {
+      id, desc, pageTypeId, path, restype
+    } = data
+    return new Promise((resolve, reject) => {
+      MongoClient.connect(URL, (err, db) => {
+        const collection = db.collection(colName)
+        let where = {
+          _id: new ObjectID(id)
+        }
+        collection.update(where,{$set:{desc, pageTypeId, path, restype}}, (inerr, docs) => {
+          // console.log(docs)
+          resolve({})
+          db.close()
+        })
+      })
+    })
+  },
+  delete(data: ITApiTypeSave) {
+    let {
+      id
+    } = data
+    return new Promise((resolve, reject) => {
+      MongoClient.connect(URL, (err, db) => {
+        const collection = db.collection(colName)
+        collection.remove({ _id: new ObjectID(id) }, (delErr, result) => {
+          if (delErr) {
+            reject(`delete pageType error`)
+          } else {
+            // console.log(result.result)
+            resolve({})
+          }
+          db.close()
+        })
+      })
+    })
   }
 }

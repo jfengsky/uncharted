@@ -117,6 +117,7 @@ class ApiType extends React.Component<ITProps, ITState> {
         </label>
         <br />
         <button onClick={this.clickHandleAddApi}>{buttonText}接口类型</button>
+        { !!id && <button onClick={this.clickHandlerDeleteApi}>删除接口</button> }
       </div>
     )
   }
@@ -161,6 +162,19 @@ class ApiType extends React.Component<ITProps, ITState> {
     }
     let fetchBack = await FETCH_API_TYPE(fetchParam)
     window.location.reload()
+  }
+  clickHandlerDeleteApi = async (ev: React.MouseEvent<HTMLButtonElement>): Promise<any> => {
+    let {
+      id
+    } = this.state
+    if (!confirm("确认要删除？")) {
+        let fetchParam: ITApiType = {
+          type: 'delete',
+          id
+        }
+        let fetchBack = await FETCH_API_TYPE(fetchParam)
+        console.log(fetchBack)
+    }
   }
 }
 
