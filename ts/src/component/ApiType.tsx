@@ -151,6 +151,10 @@ class ApiType extends React.Component<ITProps, ITState> {
     if(id){
       editType = 'modify'
     }
+    
+    if(!pageTypeId){
+      pageTypeId = this.props.pageTypeList[0]._id
+    }
 
     let fetchParam: any = { // ITApiType
       type: editType,
@@ -167,13 +171,15 @@ class ApiType extends React.Component<ITProps, ITState> {
     let {
       id
     } = this.state
-    if (!confirm("确认要删除？")) {
+    if (confirm("确认要删除？")) {
         let fetchParam: ITApiType = {
           type: 'delete',
           id
         }
         let fetchBack = await FETCH_API_TYPE(fetchParam)
-        console.log(fetchBack)
+        if(!fetchBack.state){
+          location.href= '/api'
+        }
     }
   }
 }
