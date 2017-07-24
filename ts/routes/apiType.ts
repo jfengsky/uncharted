@@ -9,7 +9,6 @@ export default (req: any) => {
     restype,
     id
   } = req.body
-  console.log(req.body)
   switch(type){
     case 'add':
       return apiTypeDB.save({desc, pageTypeId, path, restype})

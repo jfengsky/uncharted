@@ -9,8 +9,8 @@ import {
 import initialState from './store/initialState'
 import Menu from './component/Menu'
 import Content from './component/Content'
-import Home from './component/Home'
 import ApiRoute from './component/ApiRoute'
+import PageRoute from './component/PageRoute'
 import Tools from './component/Tools'
 import PageType from './component/PageType'
 
@@ -18,8 +18,8 @@ interface ITProps { }
 interface ITState { }
 
 const components: any = {
-  Home,
   ApiRoute,
+  PageRoute,
   Tools,
   PageType
 }

@@ -3,7 +3,11 @@ export default {
     page: [{
       link: '/',
       title: '页面列表',
-      cmp: 'Home'
+      cmp: 'PageRoute'
+    },{
+      link: '/page',
+      title: '页面列表',
+      cmp: 'PageRoute'
     }, {
       link: '/page/type',
       title: '编辑页面类型',
