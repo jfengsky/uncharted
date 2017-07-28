@@ -5,6 +5,7 @@ interface ITProps {
   pageTypeList: any[]
 }
 interface ITState {
+  id: string,
   name: string
   desc: string
   pageTypeId: string
@@ -15,6 +16,7 @@ class AddPage extends React.Component<ITProps, ITState> {
   constructor(props: ITProps) {
     super(props)
     this.state = {
+      id: null,
       name: '',
       desc: '',
       pageTypeId: '',
@@ -27,11 +29,17 @@ class AddPage extends React.Component<ITProps, ITState> {
   
   public render():JSX.Element{
     let {
+      id,
       name,
       desc,
       pageTypeId,
       code
     } = this.state
+
+    let Text = ['保存', '修改']
+
+    let buttonText = id ? Text[1] : Text[0]
+
     return (
       <div style={{clear: 'both'}}>
         <div>
@@ -61,12 +69,16 @@ class AddPage extends React.Component<ITProps, ITState> {
         <div>
         <label>
           页面源代码代码：
-          <textarea value={code} onChange={ev => { this.setState({ code: ev.target.value }) }} />
+          <textarea value={code} onChange={ev => { this.setState({ code: ev.target.value }) }} style={{width: '100%', height: '100%'}} />
         </label>
         </div>
-        <button>保存</button>
+        <button onClick={this.handleClickSubmit}>{buttonText}</button>
       </div>
     )
+  }
+
+  private handleClickSubmit = async (ev: React.MouseEvent<HTMLButtonElement>) => {
+
   }
 }
 
