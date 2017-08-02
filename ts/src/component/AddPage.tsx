@@ -78,7 +78,14 @@ class AddPage extends React.Component<ITProps, ITState> {
   }
 
   private handleClickSubmit = async (ev: React.MouseEvent<HTMLButtonElement>) => {
-
+    let {
+      name,
+      code,
+      desc,
+      id,
+      pageTypeId
+    } = this.state
+    debugger
   }
 }
 
